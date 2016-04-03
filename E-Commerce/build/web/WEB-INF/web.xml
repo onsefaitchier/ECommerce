@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!-- was: <?xml version="1.0" encoding="ISO-8859-1"?> -->
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+    <servlet>
+        <servlet-name>ControllerServlet</servlet-name>
+        <servlet-class>contoller.ControllerServlet</servlet-class>
+        <url-pattern>/index.html</url-pattern>
+        
+        <init-param>
+        <param-name>base</param-name>
+        <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>jdbcDriver</param-name>
+            <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>imageUrl</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbUrl</param-name>
+            <param-value>jdbc:derby://localhost:1527/hotline</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbUserName</param-name>
+            <param-value>julien</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPassword</param-name>
+            <param-value>gaspar</param-value>
+        </init-param>
+    </servlet>
+</web-app>
