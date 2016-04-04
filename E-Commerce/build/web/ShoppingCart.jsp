@@ -5,11 +5,11 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="com.brainysoftware.burnaby.Product" %>
-<%@ page import="com.brainysoftware.burnaby.ShoppingItem" %>
+<%@ page import="model.Product" %>
+<%@ page import="model.ShoppingItem" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
-<jsp:useBean id="dbBean" scope="application" class="com.brainysoftware.burnaby.DbBean"/>
+<jsp:useBean id="dbBean" scope="application" class="model.DbBean"/>
 <%
     String base = (String) application.getAttribute("base");
     Hashtable shoppingCart = (Hashtable) session.getAttribute("shoppingCart");
@@ -87,25 +87,26 @@
             <TD><FONT FACE="Verdana" SIZE="3"><B>Delete</B></FONT></TD>
         </TR>
 <%
-        Enumeration enum = shoppingCart.elements();
-        while (enum.hasMoreElements()) {
-            ShoppingItem item = (ShoppingItem) enum.nextElement();
+        Enumeration enumerate = shoppingCart.elements();
+        while (enumerate.hasMoreElements()) {
+            ShoppingItem item = (ShoppingItem) enumerate.nextElement();
 %>
         <TR>
         <TD><FONT FACE="Verdana" SIZE="2"><%=item.name%></FONT></TD>
         <TD><FONT FACE="Verdana" SIZE="2"><%=item.description%></FONT></TD>
         <TD><FONT FACE="Verdana" SIZE="2"><%=item.price%></FONT></TD>
+        
         <FORM>
-        <INPUT TYPE="HIDDEN" NAME="action" VALUE="updateShoppingItem">
-        <INPUT TYPE="HIDDEN" NAME="productId" VALUE="<%=item.productId%>">
-        <TD><INPUT TYPE="TEXT" Size="2" NAME="quantity" VALUE="<%=item.quantity%>"></TD>
-        <TD><FONT FACE="Verdana" SIZE="2"><%=item.quantity*item.price%></FONT></TD>
-        <TD><INPUT TYPE="SUBMIT" VALUE="Update"></TD>
+            <INPUT TYPE="HIDDEN" NAME="action" VALUE="updateShoppingItem">
+            <INPUT TYPE="HIDDEN" NAME="productId" VALUE="<%=item.productId%>">
+            <TD><INPUT TYPE="TEXT" Size="2" NAME="quantity" VALUE="<%=item.quantity%>"></TD>
+            <TD><FONT FACE="Verdana" SIZE="2"><%=item.quantity*item.price%></FONT></TD>
+            <TD><INPUT TYPE="SUBMIT" VALUE="Update"></TD>
         </FORM>
         <FORM>  
-        <INPUT TYPE="HIDDEN" NAME="action" VALUE="deleteShoppingItem">
-        <INPUT TYPE="HIDDEN" NAME="productId" VALUE="<%=item.productId%>">
-        <TD><INPUT TYPE="SUBMIT" VALUE="Delete"></TD>
+            <INPUT TYPE="HIDDEN" NAME="action" VALUE="deleteShoppingItem">
+            <INPUT TYPE="HIDDEN" NAME="productId" VALUE="<%=item.productId%>">
+            <TD><INPUT TYPE="SUBMIT" VALUE="Delete"></TD>
         </FORM>
         </TR>
 <%

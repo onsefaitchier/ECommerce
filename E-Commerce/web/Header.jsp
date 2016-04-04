@@ -6,7 +6,7 @@
 
 <%
 String base = (String) application.getAttribute("base");
-//String imageUrl = (String) application.getAttribute("imageUrl");
+String imageUrl = (String) application.getAttribute("imageUrl");
 %>
     <TABLE WIDTH="1500" CELLPADDING="0" HEIGHT="100" CELLSPACING="0" BORDER="0">
     <TR>
@@ -14,7 +14,7 @@ String base = (String) application.getAttribute("base");
             <FONT FACE="Verdana" SIZE="8">Jacky Store</FONT>
         </TD>
         <TD ALIGN="RIGHT" BGCOLOR="F6F6F6">
-            <A HREF="<%=base%>?action=displayShoppingCart"><IMG BORDER="0" SRC="<%=("Images/michel.jpg")%>"></A>
+            <A HREF="<%=base%>?action=displayShoppingCart"><IMG alt ='Michel not found :(' SRC="<%=(imageUrl+"michel.jpg")%>"></A>
             &nbsp;&nbsp;&nbsp;
         </TD>
     </TR>

@@ -48,36 +48,80 @@ public class ControllerServlet extends HttpServlet
         /**Process the HTTP Get request*/
         public void doGet(HttpServletRequest request, HttpServletResponse  response) throws ServletException, IOException 
         {
-            doPost(request, response);
+            processRequest(request, response);
         }
 
         /**Process the HTTP Post request*/
         public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
         {
+            
+            processRequest(request, response);
+
+        }
         
-            String base = "";
-            String url = base + "Default.jsp";
+        public void processRequest (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+        {
+           
+            String url ="Default.jsp";
             String action = request.getParameter("action");
                
             
             if (action!=null)
             {
                 if (action.equals("search"))
-                url = base + "SearchResults.jsp";
+                url ="SearchResults.jsp";
                 else if (action.equals("browseCatalog"))
-                url = base + "BrowseCatalog.jsp";
+                url = "BrowseCatalog.jsp";
                 else if (action.equals("productDetails"))
-                url = base + "ProductDetails.jsp";
+                url ="ProductDetails.jsp";
                 else if (action.equals("addShoppingItem") || action.equals("updateShoppingItem") || action.equals("deleteShoppingItem") || action.equals("displayShoppingCart"))
-                url = base + "ShoppingCart.jsp";
+                url = "ShoppingCart.jsp";
                 else if (action.equals("checkOut"))
-                url = base + "CheckOut.jsp";
+                url = "CheckOut.jsp";
                 else if (action.equals("order"))
-                url = base + "Order.jsp";
+                url ="Order.jsp";
             }
 
             RequestDispatcher disp = request.getRequestDispatcher(url);
             //RequestDispatcher disp = getServletContext().getRequestDispatcher(url);
             disp.forward(request, response);
+       /*     
+            Le switch provoque une erreur pour le moment 
+            
+            switch(action)
+            {
+                case "search":
+                    url ="SearchResults.jsp";
+                    break;
+                case "browseCatalog":
+                    url = "BrowseCatalog.jsp";
+                    break;
+                case "productDetails":
+                    url ="ProductDetails.jsp";
+                    break;
+                case "addShoppingItem": 
+                    url = "ShoppingCart.jsp";
+                    break;
+                case  "updateShoppingItem":
+                    url = "ShoppingCart.jsp";
+                    break;
+                case "deleteShoppingItem":
+                    url = "ShoppingCart.jsp";
+                    break;
+                case "displayShoppingCart":
+                    url = "ShoppingCart.jsp";
+                    break;
+                case "checkOut":
+                    url = "CheckOut.jsp";
+                    break;
+                case "order":
+                    url ="Order.jsp";
+                    break;
+                default : 
+                    String url ="Default.jsp";
+                    break;
+            
+            }
+            */
         }
 }

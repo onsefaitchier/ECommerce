@@ -5,12 +5,12 @@
 <web-app>
     <servlet>
         <servlet-name>ControllerServlet</servlet-name>
-        <servlet-class>contoller.ControllerServlet</servlet-class>
+        <servlet-class>controller.ControllerServlet</servlet-class>
         <url-pattern>/index.html</url-pattern>
         
         <init-param>
         <param-name>base</param-name>
-        <param-value></param-value>
+        <param-value>index.html</param-value>
         </init-param>
         <init-param>
             <param-name>jdbcDriver</param-name>
@@ -18,7 +18,7 @@
         </init-param>
         <init-param>
             <param-name>imageUrl</param-name>
-            <param-value></param-value>
+            <param-value>Images/</param-value>
         </init-param>
         <init-param>
             <param-name>dbUrl</param-name>
@@ -33,4 +33,8 @@
             <param-value>gaspar</param-value>
         </init-param>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/index.html</url-pattern>
+    </servlet-mapping>
 </web-app>
