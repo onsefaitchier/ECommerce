@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/julien/ESIEE/J2EE/Cours/ProjetE-Commerce/E-Commerce/web/CheckOut.jsp</file>
+            <file>file:/home/julien/ESIEE/J2EE/Cours/ProjetE-Commerce/E-Commerce/web/ProductDetails.jsp</file>
             <file>file:/home/julien/ESIEE/J2EE/Cours/ProjetE-Commerce/E-Commerce/web/SearchResult.jsp</file>
+            <file>file:/home/julien/ESIEE/J2EE/Cours/ProjetE-Commerce/E-Commerce/src/java/model/DbBean.java</file>
             <file>file:/home/julien/ESIEE/J2EE/Cours/ProjetE-Commerce/E-Commerce/web/ShoppingCart.jsp</file>
-            <file>file:/home/julien/ESIEE/J2EE/Cours/ProjetE-Commerce/E-Commerce/src/java/controller/ControllerServlet.java</file>
-            <file>file:/home/julien/ESIEE/J2EE/Cours/ProjetE-Commerce/E-Commerce/web/index.html</file>
             <file>file:/home/julien/ESIEE/J2EE/Cours/ProjetE-Commerce/E-Commerce/web/Header.jsp</file>
+            <file>file:/home/julien/ESIEE/J2EE/Cours/ProjetE-Commerce/E-Commerce/web/Menu.jsp</file>
             <file>file:/home/julien/ESIEE/J2EE/Cours/ProjetE-Commerce/E-Commerce/web/Default.jsp</file>
             <file>file:/home/julien/ESIEE/J2EE/Cours/ProjetE-Commerce/E-Commerce/web/WEB-INF/web.xml</file>
         </group>

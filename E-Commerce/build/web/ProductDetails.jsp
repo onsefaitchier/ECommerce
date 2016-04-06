@@ -34,7 +34,7 @@
 %>
 <TABLE>
 <TR>
-    <TD><IMG BORDER="0" WIDTH="100" SRC="<%=(imageUrl + product.id)%>.gif"></TD>
+    <TD><IMG BORDER="0" WIDTH="100" SRC="<%=(imageUrl + product.id)%>.jpg"></TD>
     <TD><B><%=product.name%></B><BR>
         <%=product.description%><BR>
         Price : $<%=product.price%></TD>

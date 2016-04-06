@@ -22,7 +22,7 @@
         </init-param>
         <init-param>
             <param-name>dbUrl</param-name>
-            <param-value>jdbc:derby://localhost:1527/hotline</param-value>
+            <param-value>jdbc:derby://localhost:1527/ECommerce</param-value>
         </init-param>
         <init-param>
             <param-name>dbUserName</param-name>
