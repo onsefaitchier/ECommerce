@@ -1,5 +1,4 @@
-Alors le site fonctionne (en tout cas la premiere page), ce qu'il faut faire c'est créer une base de données de trucs à vendre 
-(des jeux, des musiques, des scooters, ...etc) pour pouvoir faire marcher le reste. 
+Alors le site fonctionne completement, il faut remplir la base de données de jeux à vendre. 
 Pour la connection avec la DB, faites attenteion a changer le nom et le mdp de vos DB.
 Sinon faut changer tout plein de truc pour que le code soit différent de celui d'origine (une annexe donnée par le prof) 
 On dira qu'on est parti de cette architecture pour notre site donc ça devrait le faire.
