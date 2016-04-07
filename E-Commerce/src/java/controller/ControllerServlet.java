@@ -74,7 +74,7 @@ public class ControllerServlet extends HttpServlet
                 url = "BrowseCatalog.jsp";
                 else if (action.equals("productDetails"))
                 url ="ProductDetails.jsp";
-                else if (action.equals("addShoppingItem") || action.equals("updateShoppingItem") || action.equals("deleteShoppingItem") || action.equals("displayShoppingCart"))
+                else if (action.equals("addItemBean") || action.equals("updateItemBean") || action.equals("deleteItemBean") || action.equals("displayShoppingCart"))
                 url = "ShoppingCart.jsp";
                 else if (action.equals("checkOut"))
                 url = "CheckOut.jsp";

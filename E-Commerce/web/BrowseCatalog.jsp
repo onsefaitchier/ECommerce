@@ -4,7 +4,7 @@
     Author     : julien
 --%>
 
-<%@ page import="model.Product" %>
+<%@ page import="model.ProductBean" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
 <jsp:useBean id="dbBean" scope="application" class="model.DbBean"/>
@@ -13,7 +13,7 @@
 %>
 <HTML>
 <HEAD>
-<TITLE>Browse Catalog</TITLE>
+<TITLE>Catalogue</TITLE>
 </HEAD>
 <BODY>
 <TABLE>
@@ -38,20 +38,20 @@
     ArrayList products = dbBean.getProductsInCategory(categoryId);
     Iterator iterator = products.iterator();
     while (iterator.hasNext()) {
-        Product product = (Product) iterator.next();
+        ProductBean product = (ProductBean) iterator.next();
 %>
     <TR>
-        <TD><FONT FACE="Verdana" SIZE="2"><%=product.name%></FONT></TD>
-        <TD><FONT FACE="Verdana" SIZE="2"><%=product.description%></FONT></TD>
-        <TD><FONT FACE="Verdana" SIZE="2"><%=product.price%></FONT></TD>
-        <TD><A HREF="<%=base%>?action=productDetails&productId=<%=product.id%>">
+        <TD><FONT FACE="Verdana" SIZE="2"><%=product.getName()%></FONT></TD>
+        <TD><FONT FACE="Verdana" SIZE="2"><%=product.getDescription()%></FONT></TD>
+        <TD><FONT FACE="Verdana" SIZE="2"><%=product.getPrice()%></FONT></TD>
+        <TD><A HREF="<%=base%>?action=productDetails&productId=<%=product.getId()%>">
             <FONT FACE="Verdana" SIZE="2">Details</FONT></A></TD>
     </TR>
 <%
         }
     }
     else
-        out.println("Invalid category.");
+        out.println("Categorie non valide");
 %>  
     </TABLE>
     </TD>

@@ -10,7 +10,7 @@
 %>
 <HTML>
 <HEAD>
-<TITLE>Check Out</TITLE>
+<TITLE>Payment</TITLE>
 </HEAD>
 <BODY>
 <TABLE>
@@ -24,29 +24,29 @@
     <INPUT TYPE="HIDDEN" NAME="action" VALUE="order">
     <TABLE>
     <TR>
-        <TD COLSPAN="2"><I><B>Delivery Details</B></I></TD>
+        <TD COLSPAN="2"><I><B>Détails</B></I></TD>
     </TR>
     <TR>
-        <TD>Contact Name:</TD>
+        <TD>Nom du contact:</TD>
         <TD><INPUT TYPE="TEXT" NAME="contactName"></TD>
     </TR>
     <TR>
-        <TD>Delivery Address:</TD>
+        <TD>Adresse de livraison:</TD>
         <TD><INPUT TYPE="TEXT" NAME="deliveryAddress"></TD>
     </TR>
     <TR>
-        <TD COLSPAN="2"><I><B>Credit Card Details</B></I></TD>
+        <TD COLSPAN="2"><I><B>informations banquaires</B></I></TD>
     </TR>   
     <TR>
-        <TD>Name on Credit Card:</TD>
+        <TD>Titulaire de la carte:</TD>
         <TD><INPUT TYPE="TEXT" NAME="ccName"></TD>
     </TR>
     <TR>
-        <TD>Credit Card Number:</TD>
+        <TD>Numéro de carte banquaire:</TD>
         <TD><INPUT TYPE="TEXT" NAME="ccNumber"></TD>
     </TR>
     <TR>
-        <TD>Credit Card Expiry Date:</TD>
+        <TD>Date d'expiration de carte:</TD>
         <TD> <INPUT TYPE="TEXT" NAME="ccExpiryDate"></TD>
     </TR>
     <TR>

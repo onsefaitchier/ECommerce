@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ page import="model.Product" %>
+<%@ page import="model.ProductBean" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
 <jsp:useBean id="dbBean" scope="application" class="model.DbBean"/>
@@ -29,20 +29,20 @@
 <%
     try {
         int productId = Integer.parseInt(request.getParameter("productId"));
-        Product product = dbBean.getProductDetails(productId);
+        ProductBean product = dbBean.getProductDetails(productId);
         if (product!=null) {
 %>
 <TABLE>
 <TR>
-    <TD><IMG BORDER="0" WIDTH="100" SRC="<%=(imageUrl + product.id)%>.jpg"></TD>
-    <TD><B><%=product.name%></B><BR>
-        <%=product.description%><BR>
-        Price : $<%=product.price%></TD>
+    <TD><IMG BORDER="0" WIDTH="100" SRC="<%=(imageUrl + product.getId())%>.jpg"></TD>
+    <TD><B><%=product.getName()%></B><BR>
+        <%=product.getDescription()%><BR>
+        Prix : $<%=product.getPrice()%></TD>
 </TR>
 <TR>
     <TD COLSPAN="2" ALIGN="RIGHT">
-        <A HREF="<%=base%>?action=addShoppingItem&productId=<%=product.id%>">
-        Add To Cart</A>
+        <A HREF="<%=base%>?action=addItemBean&productId=<%=product.getId()%>">
+        Ajouter au panier</A>
     </TD>
 </TR>
 </TABLE>

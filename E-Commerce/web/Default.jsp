@@ -6,7 +6,7 @@
 
 <HTML>
 <HEAD>
-<TITLE>Welcome</TITLE>
+<TITLE>Acheter vos jeux sur Internet</TITLE>
 </HEAD>
 <BODY>
 <TABLE>
@@ -17,7 +17,8 @@
     <TD><jsp:include page="Menu.jsp" flush="true"/></TD>
     <TD VALIGN="TOP">
 
-        <H2>Welcome to the best site you've ever seen. That can only mean one thing.</H2>
+        <H2>Bienvenue sur le site de vente de jeux vidéo.</H2>
+        <P> Utiliser les catégories a gauche pour parcourir le catalogue</P>
 
     </TD>
 </TR>

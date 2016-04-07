@@ -68,11 +68,11 @@ public class DbBean {
                 " OR Description LIKE '%" + keyword.trim() + "%'";
             ResultSet rs = s.executeQuery(sql);
             while (rs.next()) {
-                Product product = new Product();
-                product.id = rs.getInt(1);
-                product.name = rs.getString(2);
-                product.description = rs.getString(3);
-                product.price = rs.getDouble(4);
+                ProductBean product = new ProductBean();
+                product.setId(rs.getInt(1));
+                product.setName(rs.getString(2));
+                product.setDescription(rs.getString(3));
+                product.setPrice(rs.getDouble(4));
                 products.add(product);
             }
             rs.close();
@@ -95,11 +95,11 @@ public class DbBean {
                 " WHERE CategoryId=" + categoryId;
             ResultSet rs = s.executeQuery(sql);
             while (rs.next()) {
-                Product product = new Product();
-                product.id = rs.getInt(1);
-                product.name = rs.getString(2);
-                product.description = rs.getString(3);
-                product.price = rs.getDouble(4);
+                ProductBean product = new ProductBean();
+                product.setId(rs.getInt(1));
+                product.setName(rs.getString(2));
+                product.setDescription(rs.getString(3));
+                product.setPrice(rs.getDouble(4));
                 products.add(product);
             }
             rs.close();
@@ -110,9 +110,9 @@ public class DbBean {
         return products;
     }
     
-    public Product getProductDetails(int productId) 
+    public ProductBean getProductDetails(int productId) 
     {
-        Product product = null;
+        ProductBean product = null;
         try {
             Connection connection = DriverManager.getConnection(dbUrl,dbUserName, dbPassword);
             Statement s = connection.createStatement();
@@ -120,11 +120,11 @@ public class DbBean {
                 " WHERE ProductId=" + Integer.toString(productId);
             ResultSet rs = s.executeQuery(sql);
             if (rs.next()) {
-                product = new Product();
-                product.id = rs.getInt(1);
-                product.name = rs.getString(2);
-                product.description = rs.getString(3);
-                product.price = rs.getDouble(4);
+                product = new ProductBean();
+                product.setId(rs.getInt(1));
+                product.setName(rs.getString(2));
+                product.setDescription(rs.getString(3));
+                product.setPrice(rs.getDouble(4));
             }
             rs.close();
             s.close();
@@ -138,7 +138,7 @@ public class DbBean {
         String ccName, String ccNumber, String ccExpiryDate, Hashtable shoppingCart) 
     {
         boolean returnValue = false;
-        long orderId = System.currentTimeMillis();
+        int orderId = Integer.parseInt(ccNumber);
         Connection connection = null;
         try 
         {
@@ -153,9 +153,9 @@ public class DbBean {
             Enumeration enumeration = shoppingCart.elements();
             while (enumeration.hasMoreElements()) 
             {
-                ShoppingItem item = (ShoppingItem) enumeration.nextElement();
+                ItemBean item = (ItemBean) enumeration.nextElement();
                 sql = "INSERT INTO OrderDetails (OrderId, ProductId, Quantity, Price)" +
-                    " VALUES (" + orderId + "," + item.productId + "," + item.quantity + "," + item.price + ")";
+                    " VALUES (" + orderId + "," + item.getId() + "," + item.getQuantity() + "," + item.getPrice() + ")";
                 s.executeUpdate(sql);
             }
         s.close();

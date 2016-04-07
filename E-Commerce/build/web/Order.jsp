@@ -5,13 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="model.Product" %>
+<%@ page import="model.ProductBean" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
 <jsp:useBean id="dbBean" scope="application" class="model.DbBean"/>
 <HTML>
 <HEAD>
-<TITLE>Order</TITLE>
+<TITLE>Resultat Commande</TITLE>
 </HEAD>
 <BODY>
 <TABLE>
@@ -29,10 +29,10 @@
         request.getParameter("ccExpiryDate"),
         (Hashtable) session.getAttribute("shoppingCart"))) {
         session.invalidate();
-        out.println("Thank you for your purchase");
+        out.println("Merci pour votre achat");
         }
     else
-        out.println("Error");
+        out.println("Erreur payment annulé");
 %>
     </TD>
 </TR>

@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="model.Product" %>
-<%@ page import="model.ShoppingItem" %>
+<%@ page import="model.ProductBean" %>
+<%@ page import="model.ItemBean" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
 <jsp:useBean id="dbBean" scope="application" class="model.DbBean"/>
@@ -16,17 +16,17 @@
     if (shoppingCart==null)
         shoppingCart = new Hashtable(10);
     String action = request.getParameter("action");
-    if (action!=null && action.equals("addShoppingItem")) {
+    if (action!=null && action.equals("addItemBean")) {
         try {
             int productId = Integer.parseInt(request.getParameter("productId"));
-            Product product = dbBean.getProductDetails(productId);
+            ProductBean product = dbBean.getProductDetails(productId);
             if (product!=null) {
-                ShoppingItem item = new ShoppingItem();
-                item.productId = productId;
-                item.quantity = 1;
-                item.price = product.price;
-                item.name = product.name;
-                item.description = product.description;
+                ItemBean item = new ItemBean();
+                item.setId(productId);
+                item.setQuantity(1);
+                item.setPrice(product.getPrice());
+                item.setName(product.getName());
+                item.setDescription(product.getDescription());
                 
                 shoppingCart.remove(Integer.toString(productId));
                 shoppingCart.put(Integer.toString(productId), item);
@@ -38,13 +38,13 @@
                 }
     }
     
-    if (action!=null && action.equals("updateShoppingItem")) {
+    if (action!=null && action.equals("updateItemBean")) {
         try {
             int productId = Integer.parseInt(request.getParameter("productId"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
-            ShoppingItem item = (ShoppingItem)shoppingCart.get(Integer.toString(productId));
+            ItemBean item = (ItemBean)shoppingCart.get(Integer.toString(productId));
             if (item!=null) {
-                item.quantity = quantity;
+                item.setQuantity(quantity);
             }
         }
         catch (Exception e) {
@@ -52,7 +52,7 @@
         } 
     }
     
-    if (action!=null && action.equals("deleteShoppingItem")) {
+    if (action!=null && action.equals("deleteItemBean")) {
         try {
             int productId = Integer.parseInt(request.getParameter("productId"));
             shoppingCart.remove(Integer.toString(productId));
@@ -64,7 +64,7 @@
 %>
 <HTML>
 <HEAD>
-<TITLE>Shopping Cart</TITLE>
+<TITLE>Panier d'achats</TITLE>
 </HEAD>
 <BODY>
 <TABLE>
@@ -78,34 +78,34 @@
 %>
         <TABLE>
         <TR>
-            <TD><FONT FACE="Verdana" SIZE="3"><B>Name</B></FONT></TD>
+            <TD><FONT FACE="Verdana" SIZE="3"><B>Nom</B></FONT></TD>
             <TD><FONT FACE="Verdana" SIZE="3"><B>Description</B></FONT></TD>
-            <TD><FONT FACE="Verdana" SIZE="3"><B>Price</B></FONT></TD>
-            <TD><FONT FACE="Verdana" SIZE="3"><B>Quantity</B></FONT></TD>
-            <TD><FONT FACE="Verdana" SIZE="3"><B>Subtotal</B></FONT></TD>
-            <TD><FONT FACE="Verdana" SIZE="3"><B>Update</B></FONT></TD>
-            <TD><FONT FACE="Verdana" SIZE="3"><B>Delete</B></FONT></TD>
+            <TD><FONT FACE="Verdana" SIZE="3"><B>Prix</B></FONT></TD>
+            <TD><FONT FACE="Verdana" SIZE="3"><B>Quantité</B></FONT></TD>
+            <TD><FONT FACE="Verdana" SIZE="3"><B>Sous-total</B></FONT></TD>
+            <TD><FONT FACE="Verdana" SIZE="3"><B>Metrre à jour</B></FONT></TD>
+            <TD><FONT FACE="Verdana" SIZE="3"><B>Supprimer</B></FONT></TD>
         </TR>
 <%
         Enumeration enumerate = shoppingCart.elements();
         while (enumerate.hasMoreElements()) {
-            ShoppingItem item = (ShoppingItem) enumerate.nextElement();
+            ItemBean item = (ItemBean) enumerate.nextElement();
 %>
         <TR>
-        <TD><FONT FACE="Verdana" SIZE="2"><%=item.name%></FONT></TD>
-        <TD><FONT FACE="Verdana" SIZE="2"><%=item.description%></FONT></TD>
-        <TD><FONT FACE="Verdana" SIZE="2"><%=item.price%></FONT></TD>
+        <TD><FONT FACE="Verdana" SIZE="2"><%=item.getName()%></FONT></TD>
+        <TD><FONT FACE="Verdana" SIZE="2"><%=item.getDescription()%></FONT></TD>
+        <TD><FONT FACE="Verdana" SIZE="2"><%=item.getPrice()%></FONT></TD>
         
         <FORM>
-            <INPUT TYPE="HIDDEN" NAME="action" VALUE="updateShoppingItem">
-            <INPUT TYPE="HIDDEN" NAME="productId" VALUE="<%=item.productId%>">
-            <TD><INPUT TYPE="TEXT" Size="2" NAME="quantity" VALUE="<%=item.quantity%>"></TD>
-            <TD><FONT FACE="Verdana" SIZE="2"><%=item.quantity*item.price%></FONT></TD>
+            <INPUT TYPE="HIDDEN" NAME="action" VALUE="updateItemBean">
+            <INPUT TYPE="HIDDEN" NAME="productId" VALUE="<%=item.getId()%>">
+            <TD><INPUT TYPE="TEXT" Size="2" NAME="quantity" VALUE="<%=item.getQuantity()%>"></TD>
+            <TD><FONT FACE="Verdana" SIZE="2"><%=item.getQuantity()*item.getPrice()%></FONT></TD>
             <TD><INPUT TYPE="SUBMIT" VALUE="Update"></TD>
         </FORM>
         <FORM>  
-            <INPUT TYPE="HIDDEN" NAME="action" VALUE="deleteShoppingItem">
-            <INPUT TYPE="HIDDEN" NAME="productId" VALUE="<%=item.productId%>">
+            <INPUT TYPE="HIDDEN" NAME="action" VALUE="deleteItemBean">
+            <INPUT TYPE="HIDDEN" NAME="productId" VALUE="<%=item.getId()%>">
             <TD><INPUT TYPE="SUBMIT" VALUE="Delete"></TD>
         </FORM>
         </TR>
@@ -113,7 +113,7 @@
         }
 %>
         <TR>
-            <TD COLSPAN="7"><A HREF="<%=base%>?action=checkOut">Check Out</A></TD>
+            <TD COLSPAN="7"><A HREF="<%=base%>?action=checkOut">Acces Payment</A></TD>
         </TR>
         </TABLE>
     </TD>
